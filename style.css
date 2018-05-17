@@ -1,0 +1,126 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: content-box;
+}
+body {	
+	background-color: #000;
+	min-width: 960px;
+	font-size: 16px;
+  color: #555C76;		
+}
+
+.wrapper {
+	width:100%;
+	height: 100vh;
+	background-image: url(img/bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    position: relative;
+}
+
+.todo-list__wrapper {
+	width: 500px;
+	font-family: Georgia, sasns-serif;
+	font-size: 2rem;
+	display: flex;
+	flex-direction: column;
+	color: #FFF;	
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.todo-list {
+	transition: all 1 ease;
+}
+
+.todo-list__item {
+	font-size: 20px;
+	transition: all 1s ease;
+}
+
+
+.todo-list__item:hover {
+	color: #32CD32;
+	cursor: pointer;
+}
+
+.todo-list__field {
+	width: 100%;
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.todo-list__form-field {
+	width: 65%;
+	font-size: 18px;
+	background-color: transparent;
+	border: 1px solid #fff;
+	padding: 5px 10px;
+	border-radius: 10px;
+	transition: all 2s ease;
+	color: #fff;
+	outline: none;
+}
+
+.todo-list__form-field:active,
+.todo-list__form-field:hover {
+	border: 1px solid #1B251D;
+}
+
+.todo-list_submit {
+	width: 20%;
+	margin-left: 10px;	
+	font-size: 18px;
+	padding: 5px 10px;
+	background-color: transparent;
+	-webkit-border-radius: 10px;
+	        border-radius: 10px;
+	border: 1px solid #fff;
+	color: #fff;
+	outline: none;
+	transition: all 2s ease;
+}
+
+.todo-list_submit:hover {
+	background-color: #1B251D;
+	cursor: pointer;
+	border: 1px solid #1B251D;
+}
+
+[data-role="task"] {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:#555C76;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  padding: 0 20px;
+}
+
+[data-role="task"]:hover {
+  background-color: #201E23;
+  cursor: pointer;
+
+}
+
+.close {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+}
+
+.close:hover {
+  color: red;
+}
