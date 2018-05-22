@@ -1,6 +1,7 @@
 class TodoList {
   constructor() {
     this._tasks = [];
+    this.todolist = null;
   }
   render(elem) {
     const todolist = document.querySelector(elem);
@@ -13,43 +14,34 @@ class TodoList {
   createTask() {
     let newTask = new Task(this._addTaskName());
     this._tasks.push(newTask);
-    this._addTaskForHTML();
+    this.renderTasks();
+    newTask.onDelete = this._onTaskDelete.bind(this);
+  }
+  _onTaskDelete(taskForDel) {
+    var index = -1;
+    for (let i = 0; i < this._tasks.length; i++) {
+      if (this._tasks[i] === taskForDel) {
+        index = i;
+        break;
+      }
+    };
+    this._tasks.splice(index, 1);
+    this.renderTasks();
+  }
+
+  renderTasks() {
+    const tasksBlock = document.querySelector('[data-role="tasks"]');
+    tasksBlock.innerHTML = '';
+    for (let i = 0; i < this._tasks.length; i++) {
+      tasksBlock.append(this._tasks[i].render());
+    }
   }
   _addTaskName() {
     const taskName = document.querySelector('.todo-list__form-field').value;
     return ` ${taskName} `;
   }
-  _addTaskForHTML() {
-    const tasksBlock = document.querySelector('[data-role="tasks"]');
-    tasksBlock.innerHTML = '';
-    for (let i = 0; i < this._tasks.length; i++) {
-      tasksBlock.insertAdjacentHTML('beforeend', `<p data-role="task"><input type="checkbox" ${this._tasks[i].isDone ? "checked" : ""}'> ${this._tasks[i].name} <button class="close">X</button> </p>`)
-    }
-  }
-  completeTask() {
-    let checkTask = document.querySelector('[type="checkbox"]');
-    checkTask.addEventListener('click', this.completedTask.bind(this));
-  }
-  completedTask() {
-    if (this.checkTask = true) {
-      let tasksItem = document.querySelector('[data-role="task"]');
-      tasksItem.style.textDecoration = "underline";
-    }
-  }
 }
 
-class Task {
-  constructor(name) {
-    this.name = name;
-    this.isDone = false;
-  }
-  render() {
-    const newTask = document.createElement('p');
-    newTask.classList = 'todo-list__item';
-    newTask.innerHTML = ` <input type="checkbox"> ${this.name} &#7198; `;
-    return newTask;
-  }
-}
 
 var todolistWidg = new TodoList();
 todolistWidg.render('.wrapper');

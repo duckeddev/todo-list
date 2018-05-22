@@ -118,6 +118,7 @@ body {
   background-color: transparent;
   cursor: pointer;
   font-size: 20px;
+  outline: none;
   color: #fff;
 }
 
